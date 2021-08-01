@@ -27,15 +27,11 @@ class Picpay{
      * @var string
      */
     private $callback;
-    /**
-     * @var date
-     */
-    private $expires;
 
     /**
      * Constructor
      */
-    public function __construct(string $x_picpay_token, string $x_seller_token, string $callback, string $expires){
+    public function __construct(string $x_picpay_token, string $x_seller_token, string $callback){
         /**
          * @return x-picpay-token
          */
@@ -56,13 +52,16 @@ class Picpay{
          * @return callback
          */
         $this->callback = $callback;
+    }
+
+    public function requestPayment(array $buyer, string $expire, string $price){
         /**
          * @return date
          * format: Y-m-d/H:i:s
          */
-        $expires = explode("/", $expires);
+        $expires = explode("/", $expire);
         // 0 = Date
         // 1 = Hour
-        $this->expires = $expires[0] . "T" . $expires[1] . "+05:00";
+        $expires = $expires[0] . "T" . $expires[1] . "+05:00";
     }
 }
