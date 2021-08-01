@@ -1,0 +1,18 @@
+{
+    "name": "diogocqr/picpayapi-php",
+    "description": "SDK Simples para Integraçao com a API do Picpay E-commerce",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Diogo Cerqueira",
+            "email": "diogosantoscerqueira@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.0"
+    },
+    "autoload": {
+        "classmap": ["src/"]
+    }
+}
