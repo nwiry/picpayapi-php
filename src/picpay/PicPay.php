@@ -16,11 +16,11 @@ class Picpay{
      */
     private $x_seller_token;
     /**
-     * @param class
+     * @var class
      */
     private $newPayment;
     /**
-     * @param class
+     * @var class
      */
     private $cancelPayment;
 
@@ -28,9 +28,21 @@ class Picpay{
      * Constructor
      */
     public function __construct(string $x_picpay_token, string $x_seller_token){
+        /**
+         * @return x-picpay-token
+         */
         $this->x_picpay_token = $x_picpay_token;
+        /**
+         * @return x-seller-token
+         */
         $this->x_seller_token = $x_seller_token;
+        /**
+         * @return class
+         */
         $this->newPayment = new NewPayment();
+        /**
+         * @return class
+         */
         $this->cancelPayment = new CancelPayment();
     }
 }
