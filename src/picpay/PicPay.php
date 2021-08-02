@@ -58,7 +58,7 @@ class Picpay{
         /**
          * @param class
          */
-        $newPay = new NewPayment($buyer['firstName'], $buyer['lastName'], $buyer['document'], $buyer['email'], $buyer['phone']);
+        $newPay = new NewPayment($this->x_picpay_token, $buyer['firstName'], $buyer['lastName'], $buyer['document'], $buyer['email'], $buyer['phone']);
         /**
          * @return data
          */
