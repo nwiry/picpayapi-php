@@ -12,7 +12,7 @@ class Buyer{
             "lastName" => $lastName,
             "document" => $document,
             "email" => $email,
-            "phone => $phone"
+            "phone" => $phone
         ];
         return (array) $buyerData;
     }
