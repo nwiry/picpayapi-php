@@ -46,7 +46,7 @@ class Picpay{
         $this->returnSite = $returnSite;
     }
 
-    public function requestPayment(array $buyer, array $product, string $expire){
+    public function requestPayment(array $buyer, array $product, string $expire, array $addInfo = []){
         /**
          * @return date
          * format: Y-m-d/H:i:s
@@ -62,6 +62,6 @@ class Picpay{
         /**
          * @return data
          */
-        return $newPay->requestNewPayment($product['referenceId'], $this->callback, $this->returnSite, $product['value']);
+        return $newPay->requestNewPayment($product['referenceId'], $this->callback, $expires, $this->returnSite, $product['value']);
     }
 }
