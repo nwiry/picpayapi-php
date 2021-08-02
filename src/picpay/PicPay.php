@@ -16,22 +16,18 @@ class Picpay{
      */
     private $x_seller_token;
     /**
-     * @var class
-     */
-    private $newPayment;
-    /**
-     * @var class
-     */
-    private $cancelPayment;
-    /**
      * @var string
      */
     private $callback;
+    /**
+     * @var string
+     */
+    private $returnSite;
 
     /**
      * Constructor
      */
-    public function __construct(string $x_picpay_token, string $x_seller_token, string $callback){
+    public function __construct(string $x_picpay_token, string $x_seller_token, string $callback, string $returnSite){
         /**
          * @return x-picpay-token
          */
@@ -41,20 +37,16 @@ class Picpay{
          */
         $this->x_seller_token = $x_seller_token;
         /**
-         * @return class
-         */
-        $this->newPayment = new NewPayment();
-        /**
-         * @return class
-         */
-        $this->cancelPayment = new CancelPayment();
-        /**
          * @return callback
          */
         $this->callback = $callback;
+        /**
+         * @return url
+         */
+        $this->returnSite = $returnSite;
     }
 
-    public function requestPayment(array $buyer, string $expire, string $price){
+    public function requestPayment(array $buyer, array $product, string $expire){
         /**
          * @return date
          * format: Y-m-d/H:i:s
@@ -62,6 +54,14 @@ class Picpay{
         $expires = explode("/", $expire);
         // 0 = Date
         // 1 = Hour
-        $expires = $expires[0] . "T" . $expires[1] . "+05:00";
+        $expires = $expires[0] . "T" . $expires[1] . "+05:00"; // Return Final "expiresAt";
+        /**
+         * @param class
+         */
+        $newPay = new NewPayment($buyer['firstName'], $buyer['lastName'], $buyer['document'], $buyer['email'], $buyer['phone']);
+        /**
+         * @return data
+         */
+        return $newPay->requestNewPayment($product['referenceId'], $this->callback, $this->returnSite, $product['value']);
     }
 }
