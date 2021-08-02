@@ -6,6 +6,10 @@ class NewPayment{
     /**
      * @var string
      */
+    private $x_picpay_token;
+    /**
+     * @var string
+     */
     private $firstName;
     /**
      * @var string
@@ -24,7 +28,11 @@ class NewPayment{
      */
     private $phone;
 
-    public function __construct(string $x_seller_token, string $firstName, string $lastName, string $document, string $email, string $phone){
+    public function __construct(string $x_picpay_token, string $firstName, string $lastName, string $document, string $email, string $phone){
+        /**
+         * @return x_picpay_token
+         */
+        $this->x_picpay_token = $x_picpay_token;
         /**
          * @return firstName
          */
